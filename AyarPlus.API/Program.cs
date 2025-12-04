@@ -42,7 +42,10 @@ var uploadsPath = Path.Combine(app.Environment.WebRootPath ?? Path.Combine(Direc
 if (!Directory.Exists(uploadsPath))
     Directory.CreateDirectory(uploadsPath);
 
-// Configure the HTTP request pipeline
+app.UseHttpsRedirection();
+app.UseStaticFiles();
+
+// Map documentation endpoints before API Key middleware
 if (app.Environment.IsDevelopment())
 {
     app.MapOpenApi();
@@ -53,9 +56,6 @@ if (app.Environment.IsDevelopment())
                .WithDefaultHttpClient(ScalarTarget.CSharp, ScalarClient.HttpClient);
     });
 }
-
-app.UseHttpsRedirection();
-app.UseStaticFiles();
 
 app.UseApiKeyAuthentication();
 

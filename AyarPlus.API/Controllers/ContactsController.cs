@@ -101,11 +101,11 @@ public class ContactsController : ControllerBase
         return await CreateContact(dto);
     }
 
-    [HttpPost("upload")]
+    [HttpPost]
     [Consumes("multipart/form-data")]
     [ProducesResponseType(typeof(Contact), StatusCodes.Status201Created)]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
-    public async Task<ActionResult<Contact>> CreateWithFiles([FromForm] ContactCreateDto dto)
+    public async Task<ActionResult<Contact>> CreateForm([FromForm] ContactCreateDto dto)
     {
         return await CreateContact(dto);
     }
@@ -163,12 +163,12 @@ public class ContactsController : ControllerBase
         return await UpdateContact(id, dto);
     }
 
-    [HttpPut("{id:int}/upload")]
+    [HttpPut("{id:int}")]
     [Consumes("multipart/form-data")]
     [ProducesResponseType(typeof(Contact), StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status404NotFound)]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
-    public async Task<ActionResult<Contact>> UpdateWithFiles(int id, [FromForm] ContactUpdateDto dto)
+    public async Task<ActionResult<Contact>> UpdateForm(int id, [FromForm] ContactUpdateDto dto)
     {
         return await UpdateContact(id, dto);
     }
@@ -291,4 +291,3 @@ public class ContactsController : ControllerBase
         return Ok(contact);
     }
 }
-

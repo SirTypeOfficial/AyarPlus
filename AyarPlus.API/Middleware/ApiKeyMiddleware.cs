@@ -12,8 +12,11 @@ public class ApiKeyMiddleware
 
     public async Task InvokeAsync(HttpContext context, IConfiguration configuration)
     {
-        // Allow Swagger endpoints without authentication
-        if (context.Request.Path.StartsWithSegments("/swagger"))
+        // Allow documentation endpoints without authentication
+        var path = context.Request.Path.Value?.ToLower() ?? "";
+        if (path.StartsWith("/swagger") || 
+            path.StartsWith("/scalar") || 
+            path.StartsWith("/openapi"))
         {
             await _next(context);
             return;
