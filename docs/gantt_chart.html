@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>برنامه زمان‌بندی پروژه</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;700&display=swap');
+
+        body {
+            font-family: 'Vazirmatn', 'Tahoma', sans-serif;
+            direction: rtl;
+            padding: 20px 40px;
+            background-color: #f4f4f9;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        h1 {
+            text-align: center;
+            color: #2c3e50;
+            border-bottom: 2px solid #3498db;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+
+        .summary {
+            text-align: center;
+            font-size: 1.2em;
+            margin-bottom: 30px;
+            background-color: #eaf2f8;
+            padding: 15px;
+            border-radius: 8px;
+            border-right: 5px solid #3498db;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 25px 0;
+            font-size: 0.95em;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+        }
+
+        table thead tr {
+            background-color: #3498db;
+            color: #ffffff;
+            text-align: center;
+        }
+
+        table th, table td {
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            text-align: center;
+        }
+
+        table tbody tr {
+            border-bottom: 1px solid #dddddd;
+        }
+
+        table tbody tr:nth-of-type(even) {
+            background-color: #f3f3f3;
+        }
+
+        table tbody tr:last-of-type {
+            border-bottom: 2px solid #3498db;
+        }
+        
+        table tbody tr:hover {
+            background-color: #f1c40f;
+            color: #333;
+            cursor: pointer;
+        }
+
+        .phase-row {
+            font-weight: bold;
+            background-color: #ecf0f1 !important;
+            border-right: 4px solid #2980b9;
+        }
+        
+        .phase-row td {
+            text-align: center;
+        }
+
+        .task-name {
+            text-align: right !important;
+            font-weight: 500;
+        }
+
+        .activity-rnd {
+            background-color: #fdebd0;
+        }
+
+        .activity-coding {
+            background-color: #d6eaf8;
+        }
+
+        .activity-qc {
+            background-color: #d5f4e6;
+        }
+
+    </style>
+</head>
+<body>
+
+    <h1>برنامه زمان‌بندی (Gantt Chart) و برآورد زمان اجرای پروژه</h1>
+
+    <div class="summary">
+        <strong>برآورد کل زمان اجرا:</strong> حدود <strong>۶ ساعت</strong> (با احتساب زمان‌های تست و دیباگ)
+    </div>
+
+    <table>
+        <thead>
+            <tr>
+                <th>ردیف</th>
+                <th>نام تسک (Task)</th>
+                <th>زیرمجموعه</th>
+                <th>نوع فعالیت</th>
+                <th>مدت زمان تخمینی</th>
+                <th>توضیحات</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr class="phase-row">
+                <td colspan="6"><strong>فاز اول: Backend API</strong> (مجموع: ۳ ساعت و ۱۵ دقیقه)</td>
+            </tr>
+            <tr>
+                <td>۱.۱</td>
+                <td class="task-name">تحلیل و طراحی دیتابیس</td>
+                <td>API</td>
+                <td class="activity-rnd">R&D</td>
+                <td>۳۰ دقیقه</td>
+                <td>بررسی مدل Contact و روابط</td>
+            </tr>
+            <tr>
+                <td>۱.۲</td>
+                <td class="task-name">ایجاد پروژه و پیکربندی</td>
+                <td>API</td>
+                <td class="activity-coding">Coding</td>
+                <td>۱۵ دقیقه</td>
+                <td>تنظیمات Swagger و DI</td>
+            </tr>
+            <tr>
+                <td>۱.۳</td>
+                <td class="task-name">پیاده‌سازی مدل‌ها و EF Core</td>
+                <td>API</td>
+                <td class="activity-coding">Coding</td>
+                <td>۴۵ دقیقه</td>
+                <td>پیاده‌سازی Soft Delete و Migration</td>
+            </tr>
+            <tr>
+                <td>۱.۴</td>
+                <td class="task-name">پیاده‌سازی کنترلر و CRUD</td>
+                <td>API</td>
+                <td class="activity-coding">Coding</td>
+                <td>۱ ساعت و ۱۵ دقیقه</td>
+                <td>شامل آپلود فایل و Pagination</td>
+            </tr>
+            <tr>
+                <td>۱.۵</td>
+                <td class="task-name">تست و بررسی نهایی</td>
+                <td>API</td>
+                <td class="activity-qc">QC</td>
+                <td>۳۰ دقیقه</td>
+                <td>تست با Swagger</td>
+            </tr>
+            <tr class="phase-row">
+                <td colspan="6"><strong>فاز دوم: MAUI App</strong> (مجموع: ۲ ساعت و ۴۵ دقیقه)</td>
+            </tr>
+            <tr>
+                <td>۲.۱</td>
+                <td class="task-name">بررسی کتابخانه SkiaSharp</td>
+                <td>Mobile</td>
+                <td class="activity-rnd">R&D</td>
+                <td>۳۰ دقیقه</td>
+                <td>مطالعه داکیومنت Lottie در MAUI</td>
+            </tr>
+            <tr>
+                <td>۲.۲</td>
+                <td class="task-name">طراحی رابط کاربری (UI)</td>
+                <td>Mobile</td>
+                <td class="activity-coding">Coding</td>
+                <td>۴۵ دقیقه</td>
+                <td>Slider, Buttons, Layout</td>
+            </tr>
+            <tr>
+                <td>۲.۳</td>
+                <td class="task-name">پیاده‌سازی منطق انیمیشن</td>
+                <td>Mobile</td>
+                <td class="activity-coding">Coding</td>
+                <td>۱ ساعت</td>
+                <td>سینک کردن Slider با فریم‌ها</td>
+            </tr>
+            <tr>
+                <td>۲.۴</td>
+                <td class="task-name">تست روی پلتفرم‌ها</td>
+                <td>Mobile</td>
+                <td class="activity-qc">QC</td>
+                <td>۳۰ دقیقه</td>
+                <td>اطمینان از عدم Deform شدن</td>
+            </tr>
+        </tbody>
+    </table>
+
+</body>
+</html>
