@@ -1,0 +1,4 @@
+<Solution>
+  <Project Path="AyarPlus.API/AyarPlus.API.csproj" />
+  <Project Path="AyarPlus.MAUI/AyarPlus.MAUI.csproj" />
+</Solution>
